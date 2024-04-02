@@ -1,0 +1,7 @@
+GET http://localhost:3006/api/links
+
+###
+GET http://localhost:3006/api/links?id=1
+
+###
+GET http://localhost:3006/api/link
