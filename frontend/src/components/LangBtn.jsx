@@ -26,6 +26,9 @@ const LangBtn = ({ lang, link }) => {
     case 'be':
       langFull = 'Belarusian'
       break
+    case 'ja':
+      langFull = 'Japanese'
+      break
     default:
       break
   }
