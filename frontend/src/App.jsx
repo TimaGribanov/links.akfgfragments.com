@@ -34,21 +34,21 @@ const App = () => {
   return (
     <div className='container text-center w-75'>
       <Helmet>
+        <meta property='og:image' content={links.img_uri} />
+        <meta property='og:image:alt' content={links.title} />
         <meta property='og:type' content='website' />
         <meta property='og:title' content={links.title} />
         <meta property='og:url' content={window.location} />
         <meta property='og:description' content='akfgfragments.com' />
-        <meta property='og:image' content={links.img_uri} />
-        <meta property='og:image:alt' content={links.title} />
         <meta property='og:site_name' content='akfgfragments' />
-        
+
+        <meta property='twitter:image' content={links.img_uri} />
+        <meta property='twitter:image:alt' content={links.title} />
         <meta property='twitter:card' content='website' />
         <meta property='twitter:site' content='@AkfgfragmentsEn' />
         <meta property='twitter:creator' content='@AkfgfragmentsEn' />
         <meta property='twitter:description' content='akfgfragments.com' />
         <meta property='twitter:title' content={links.title} />
-        <meta property='twitter:image' content={links.img_uri} />
-        <meta property='twitter:image:alt' content={links.title} />
       </Helmet>
       <header><span>akfgfragments</span></header>
       <main className='mt-5'>
