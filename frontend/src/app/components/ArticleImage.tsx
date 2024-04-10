@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 const ArticleImage = ({
   uri, altText
 }:
@@ -6,7 +8,13 @@ const ArticleImage = ({
   altText: string
 }) => {
   return <figure className='figure'>
-    <img src={uri} className='figure-img img-fluid rounded' alt={altText} />
+    <Image
+      src={uri}
+      width={500}
+      height={300}
+      className='figure-img img-fluid rounded'
+      alt={altText}
+    />
   </figure>
 }
 

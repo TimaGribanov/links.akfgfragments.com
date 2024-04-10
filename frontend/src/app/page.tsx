@@ -1,56 +1,73 @@
-import { useState, useEffect } from 'react'
+import { Metadata, ResolvingMetadata } from 'next'
+import Title from '@/app/components/Title'
+import ArticleImage from '@/app/components/ArticleImage'
+import LangBtnBlock from '@/app/components/LangBtnBlock'
+import Footer from '@/app/components/Footer'
 
-import Title from './components/Title'
-import ArticleImage from './components/ArticleImage'
-import LangBtnBlock from './components/LangBtnBlock'
-import Footer from './components/Footer'
+const getCurrentHost =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3006'
+    : 'https://links.akfgfragments.com'
 
-const Home = () => {
-  const [links, setLinks] = useState({})
+const getData = async (params: {}) => {
+  const id = params.id
 
-  const getCurrentHost =
-    import.meta.env.MODE === 'development'
-      ? 'http://localhost:3006'
-      : 'https://links.akfgfragments.com'
+  const response = await fetch(`${getCurrentHost}/api/links?id=${id}`)
 
-  useEffect(() => {
-    getData()
-  }, [])
-
-  const getData = async () => {
-    const params = new URLSearchParams(window.location.search)
-    const id = params.get('id')
-
-    const response = await axios
-      .get(`${getCurrentHost}/api/links`, { params: { id: id } })
-    
-    setLinks(response.data[0])
+  if (!response.ok) {
+    const message = `An error has occured: ${response.status}`;
+    throw new Error(message);
   }
+
+  const jsonResponse = await response.json()
+
+  return jsonResponse[0]
+}
+
+type Props = {
+  params: { id: string }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
+
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const links = await getData(searchParams)
+
+  const title = links.title + ' – akfgfragments'
+
+  return {
+    title: title,
+    openGraph: {
+      title: title,
+      description: links.title,
+      url: `https://links.akfgfragments.com?id=${searchParams.id}`,
+      siteName: 'akfgfragments.com',
+      images: [
+        {
+          url: links.img_uri,
+          alt: links.title
+        }
+      ],
+      locale: 'en_GB',
+      type: 'website'
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: title,
+      description: links.title,
+      creator: '@AkfgfragmentsEn',
+      images: [ links.img_uri]
+    }
+  }
+}
+
+const Home = async ({ params, searchParams }: Props) => {
+  const links = await getData(searchParams)
 
   return (
     <div className='container text-center w-75'>
-      <Helmet>
-        <meta name='og:image' content={links.img_uri} />
-        <meta name='og:image:alt' content={links.title} />
-        <meta name='og:type' content='website' />
-        <meta name='og:title' content={links.title} />
-        <meta name='og:url' content={window.location} />
-        <meta name='og:description' content='akfgfragments.com' />
-        <meta name='og:site_name' content='akfgfragments' />
-
-        <meta name='twitter:image' content={links.img_uri} />
-        <meta name='twitter:image:alt' content={links.title} />
-        <meta name='twitter:card' content='website' />
-        <meta name='twitter:site' content='@AkfgfragmentsEn' />
-        <meta name='twitter:creator' content='@AkfgfragmentsEn' />
-        <meta name='twitter:description' content='akfgfragments.com' />
-        <meta name='twitter:title' content={links.title} />
-
-        <meta charset='UTF-8' />
-        <link rel='icon' type='image/ico' href='https://akfgfragments.com/favicon.ico' />
-        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-        <title>{links.title} – akfgfragments</title>
-      </Helmet>
       <header><span>akfgfragments</span></header>
       <main className='mt-5'>
         <Title title={links.title} />

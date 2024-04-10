@@ -1,6 +1,6 @@
 import LangBtn from './LangBtn'
 
-const LangBtnBlock = ({ links }: { links: string }) => {
+const LangBtnBlock = ({ links }: { links: {} }) => {
   return (
     <div className='mt-2'>
       {Object.entries(links).map(([k, v], i) => {

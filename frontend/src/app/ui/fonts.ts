@@ -1,3 +1,3 @@
 import { Lora } from 'next/font/google'
 
-export const lora = Lora({})
+export const lora = Lora({ subsets: ['latin'] })
