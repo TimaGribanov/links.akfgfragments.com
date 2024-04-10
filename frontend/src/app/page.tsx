@@ -9,7 +9,7 @@ const getCurrentHost =
     ? 'http://localhost:3006'
     : 'https://links.akfgfragments.com'
 
-const getData = async (params: {}) => {
+const getData = async (params: { [key: string]: string | string[] | undefined }) => {
   const id = params.id
 
   const response = await fetch(`${getCurrentHost}/api/links?id=${id}`)
