@@ -34,21 +34,26 @@ const App = () => {
   return (
     <div className='container text-center w-75'>
       <Helmet>
-        <meta property='og:image' content={links.img_uri} />
-        <meta property='og:image:alt' content={links.title} />
-        <meta property='og:type' content='website' />
-        <meta property='og:title' content={links.title} />
-        <meta property='og:url' content={window.location} />
-        <meta property='og:description' content='akfgfragments.com' />
-        <meta property='og:site_name' content='akfgfragments' />
+        <meta name='og:image' content={links.img_uri} />
+        <meta name='og:image:alt' content={links.title} />
+        <meta name='og:type' content='website' />
+        <meta name='og:title' content={links.title} />
+        <meta name='og:url' content={window.location} />
+        <meta name='og:description' content='akfgfragments.com' />
+        <meta name='og:site_name' content='akfgfragments' />
 
-        <meta property='twitter:image' content={links.img_uri} />
-        <meta property='twitter:image:alt' content={links.title} />
-        <meta property='twitter:card' content='website' />
-        <meta property='twitter:site' content='@AkfgfragmentsEn' />
-        <meta property='twitter:creator' content='@AkfgfragmentsEn' />
-        <meta property='twitter:description' content='akfgfragments.com' />
-        <meta property='twitter:title' content={links.title} />
+        <meta name='twitter:image' content={links.img_uri} />
+        <meta name='twitter:image:alt' content={links.title} />
+        <meta name='twitter:card' content='website' />
+        <meta name='twitter:site' content='@AkfgfragmentsEn' />
+        <meta name='twitter:creator' content='@AkfgfragmentsEn' />
+        <meta name='twitter:description' content='akfgfragments.com' />
+        <meta name='twitter:title' content={links.title} />
+
+        <meta charset='UTF-8' />
+        <link rel='icon' type='image/ico' href='https://akfgfragments.com/favicon.ico' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <title>{links.title} – akfgfragments</title>
       </Helmet>
       <header><span>akfgfragments</span></header>
       <main className='mt-5'>
