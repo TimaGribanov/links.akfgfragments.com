@@ -1,6 +1,11 @@
-import PropTypes from 'prop-types'
-
-const LangBtn = ({ lang, link }) => {
+const LangBtn = ({
+  lang,
+  link
+}:
+{
+  lang: string,
+  link: string
+}) => {
   const hrefLang = lang === 'idd' ? 'id' : lang
 
   let langFull
@@ -38,8 +43,3 @@ const LangBtn = ({ lang, link }) => {
 }
 
 export default LangBtn
-
-LangBtn.propTypes = {
-  lang: PropTypes.string.isRequired,
-  link: PropTypes.string
-}

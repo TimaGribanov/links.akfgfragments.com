@@ -1,7 +1,6 @@
-import PropTypes from 'prop-types'
 import LangBtn from './LangBtn'
 
-const LangBtnBlock = ({ links }) => {
+const LangBtnBlock = ({ links }: { links: string }) => {
   return (
     <div className='mt-2'>
       {Object.entries(links).map(([k, v], i) => {
@@ -13,7 +12,3 @@ const LangBtnBlock = ({ links }) => {
 }
 
 export default LangBtnBlock
-
-LangBtnBlock.propTypes = {
-  links: PropTypes.object.isRequired
-}
