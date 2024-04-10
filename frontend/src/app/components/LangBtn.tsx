@@ -4,7 +4,7 @@ const LangBtn = ({
 }:
 {
   lang: string,
-  link: string
+  link: any
 }) => {
   const hrefLang = lang === 'idd' ? 'id' : lang
 
