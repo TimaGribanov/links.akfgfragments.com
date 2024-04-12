@@ -43,24 +43,25 @@ export const getServerSideProps = (async (context) => {
 }) satisfies GetServerSideProps<{ links: Links }>
 
 const Home = (links: Links) => {
+  const metaTitle = `${links.title} – akfgfragments`
   const pageUrl = `https://links.akfgfragments.com/?id=${links.id}`
   return (
     <div className='container text-center w-75'>
       <Head>
-        <meta property='og:title' content={links.title} />
-        <meta property='og:description' content='akfgfragments' />
+        <meta property='og:title' content={metaTitle} />
+        <meta property='og:description' content='Your ultimate guide to Asian Kung-Fu Generation world' />
         <meta property='og:image' content={links.img_uri} />
         <meta property='og:url' content={pageUrl} />
         <meta property='og:type' content='website' />
         <meta property='og:site_name' content='akfgfragments.com' />
 
         <meta name='twitter:card' content='summary_large_image' />
-        <meta name='twitter:title' content={links.title} />
-        <meta name='twitter:description' content='akfgfragments' />
+        <meta name='twitter:title' content={metaTitle} />
+        <meta name='twitter:description' content='Your ultimate guide to Asian Kung-Fu Generation world' />
         <meta name='twitter:image' content={links.img_uri} />
         <meta name='twitter:creator' content='@AkfgfragmentsEn' />
 
-        <title>{links.title} – akfgfragments</title>
+        <title>{metaTitle}</title>
       </Head>
       <div className='header'><span>akfgfragments</span></div>
       <div className='mt-5 main'>
