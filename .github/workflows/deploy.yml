@@ -27,17 +27,15 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies
-        run: npm install
-      
-      - name: Build NextJs app
-        run: npm run build
-
-      - name: Install SHH-key
-        uses: shimataro/ssh-key-action@v2
+      - name: Deploy to the server
+        uses: appleboy/ssh-action@master
         with:
+          host: ${{ secrets.IP }}
+          username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
-          known_hosts: ${{ secrets.KNOWN_HOSTS }}
-     
-      - name: deploy
-        run: rsync -ar out ${{ secrets.USER }}@${{ secrets.IP }}:${{ secrets.PATH }}
+          script: |
+            cd ${{ secrets.PATH }}
+            git pull
+            npm ci
+            npm run build
+            pm2 restart links
