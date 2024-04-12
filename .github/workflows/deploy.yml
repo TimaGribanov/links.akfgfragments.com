@@ -21,21 +21,12 @@ jobs:
 
       - name: Show repo contents
         run: ls -alR
-      
-      - name: Setup node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
 
-      - name: Deploy to the server
-        uses: appleboy/ssh-action@master
+      - name: Copy folder content recursively to remote
+        uses: garygrossgarten/github-action-scp@release
         with:
+          local: .
+          remote: ${{ secrets.PATH }}
           host: ${{ secrets.IP }}
           username: ${{ secrets.USER }}
-          key: ${{ secrets.SSH_KEY }}
-          script: |
-            cd ${{ secrets.PATH }}
-            git pull
-            npm ci
-            npm run build
-            pm2 restart links
+          privateKey: ${{ secrets.SSH_KEY }}
