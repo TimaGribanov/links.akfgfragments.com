@@ -54,11 +54,11 @@ const Home = (links: Links) => {
         <meta property='og:type' content='website' />
         <meta property='og:site_name' content='akfgfragments.com' />
 
-        <meta property='twitter:card' content='summary_large_image' />
-        <meta property='twitter:title' content={links.title} />
-        <meta property='twitter:description' content='akfgfragments' />
-        <meta property='twitter:image' content={links.img_uri} />
-        <meta property='twitter:creator' content='@AkfgfragmentsEn' />
+        <meta name='twitter:card' content='summary_large_image' />
+        <meta name='twitter:title' content={links.title} />
+        <meta name='twitter:description' content='akfgfragments' />
+        <meta name='twitter:image' content={links.img_uri} />
+        <meta name='twitter:creator' content='@AkfgfragmentsEn' />
 
         <title>{links.title} – akfgfragments</title>
       </Head>
