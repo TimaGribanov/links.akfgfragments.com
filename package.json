@@ -6,7 +6,8 @@
     "dev": "next dev -p 3006",
     "build": "next build",
     "start": "next start -p 3006",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "next build && pm2 startOrRestart ecosystem.config.js"
   },
   "dependencies": {
     "bootstrap": "^5.3.3",

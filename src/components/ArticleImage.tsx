@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 const imageLoader = ({ src, width, quality }:
   { src: string, width: number, quality?: number | undefined}) => {
-  return `${src}/?w=${width}&q=${quality || 75}`
+  return `${src}?w=${width}&q=${quality || 75}`
 }
 
 const ArticleImage = ({
