@@ -43,7 +43,7 @@ export const getServerSideProps = (async (context) => {
 }) satisfies GetServerSideProps<{ links: Links }>
 
 const Home = (links: Links) => {
-  const pageUrl = `https://links.akfgfragments.com/id=?${links.id}`
+  const pageUrl = `https://links.akfgfragments.com/?id=${links.id}`
   return (
     <div className='container text-center w-75'>
       <Head>
