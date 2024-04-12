@@ -51,6 +51,7 @@ const Home = (links: Links) => {
         <meta property='og:title' content={metaTitle} />
         <meta property='og:description' content='Your ultimate guide to Asian Kung-Fu Generation world' />
         <meta property='og:image' content={links.img_uri} />
+        <meta property='og:image:alt' content={metaTitle} />
         <meta property='og:url' content={pageUrl} />
         <meta property='og:type' content='website' />
         <meta property='og:site_name' content='akfgfragments.com' />
