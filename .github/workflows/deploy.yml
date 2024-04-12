@@ -30,3 +30,11 @@ jobs:
           host: ${{ secrets.IP }}
           username: ${{ secrets.USER }}
           privateKey: ${{ secrets.SSH_KEY }}
+
+      - name: Restart the app on the server
+        uses: garygrossgarten/github-action-ssh@release
+        with:
+          command: cd ${{ secrets.PATH }}; npm ci; npm run build; npm run start
+          host: ${{ secrets.IP }}
+          username: ${{ secrets.USER }}
+          privateKey: ${{ secrets.SSH_KEY }}
