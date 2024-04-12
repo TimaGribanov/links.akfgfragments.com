@@ -1,4 +1,4 @@
-header {
+.header {
   font-weight: 700;
 }
 
@@ -26,7 +26,7 @@ button {
   text-decoration: line-through;
 }
 
-footer {
+.footer {
   padding-top: 0.6rem;
   position: fixed;
   left: 0;

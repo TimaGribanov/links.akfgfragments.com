@@ -9,14 +9,15 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: Build & deploy
     runs-on: ubuntu-latest
+    environment:
+      name: links.akfgfragments.com
+      url: https://links.akfgfragments.com/?id=73
 
     steps:
-      - name: Chekout frontend folder
+      - name: Chekout the repo
         uses: actions/checkout@v4
-        with:
-          sparse-checkout: frontend
 
       - name: Show repo contents
         run: ls -alR
@@ -27,42 +28,20 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: cd frontend; npm install
+        run: npm install
       
-      - name: Build frontend
-        run: cd frontend; npm run build
-      
-      - name: Share artifact inside workflow
-        uses: actions/upload-artifact@v1
-        with:
-          name: react-github-actions-build
-          path: frontend/dist
-  
-  deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
-    needs: build
-    environment:
-      name: links.akfgfragments.com
-      url: https://links.akfgfragments.com
-    
-    steps:
-      - name: Chekout backend folder
-        uses: actions/checkout@v4
-        with:
-          sparse-checkout: backend
+      - name: Build NextJs app
+        run: npm run build
 
-      - name: Get artifact
-        uses: actions/download-artifact@v1
+      - name: SSH Deploy
+        uses: appleboy/ssh-action@master
         with:
-          name: react-github-actions-build
-          path: backend/build
-
-      - name: Install SHH-key
-        uses: shimataro/ssh-key-action@v2
-        with:
+          host: ${{ secrets.IP }}
+          username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
-          known_hosts: ${{ secrets.KNOWN_HOSTS }}
-     
-      - name: deploy
-        run: rsync -ar backend ${{ secrets.USER }}@${{ secrets.IP }}:${{ secrets.PATH }}
+          script: |
+            cd ${{ secrets.PATH }}
+            git pull
+            npm install
+            npm run build -p 3006
+            pm2 restart links
