@@ -83,6 +83,7 @@ const Home = (links: Links) => {
         <meta name='twitter:creator' content='@AkfgfragmentsEn' />
 
         <title>{metaTitle}</title>
+        <link rel='icon' type='image/ico' href='https://akfgfragments.com/favicon.ico' />
       </Head>
       <div className='header'><span>akfgfragments</span></div>
       <div className='mt-5 main'>
