@@ -3,7 +3,7 @@ import CommonBtn from './CommonBtn'
 import type { Links } from '@/pages'
 
 const LangBtnBlock = ({ links }: { links: Links }) => {
-  if (links.id === 0) {
+  if (links.id === undefined) {
     return (
       <div className='mt-2'>
         <CommonBtn key='1' linkType='Website' href='https://akfgfragments.com' />
