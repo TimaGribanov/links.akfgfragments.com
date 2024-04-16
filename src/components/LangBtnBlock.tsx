@@ -1,7 +1,8 @@
 import LangBtn from './LangBtn'
 import CommonBtn from './CommonBtn'
+import type { Links } from '@/pages'
 
-const LangBtnBlock = ({ links }: { links: {} }) => {
+const LangBtnBlock = ({ links }: { links: Links }) => {
   if (links.id === 0) {
     return (
       <div className='mt-2'>

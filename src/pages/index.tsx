@@ -8,7 +8,7 @@ import ArticleImage from '@/components/ArticleImage'
 import LangBtnBlock from '@/components/LangBtnBlock'
 import Footer from '@/components/Footer'
 
-type Links = {
+export type Links = {
   id: number,
   title: string,
   img_uri: string,
