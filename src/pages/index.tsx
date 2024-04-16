@@ -24,6 +24,22 @@ type Links = {
 export const getServerSideProps = (async (context) => {
   const id = context.query.id
 
+  if (id === undefined || id === '0')
+    return {
+      props: {
+        id: 0,
+        title: 'Welcome to akfgfragments',
+        img_uri: 'https://akfgfragments.com/wp-content/uploads/2023/11/image-25.png',
+        en: '',
+        de: '',
+        idd: '',
+        es: '',
+        uk: '',
+        ru: '',
+        ja: ''
+      }
+    }
+
   try {
     const db = await pool.getConnection()
 
@@ -42,9 +58,13 @@ export const getServerSideProps = (async (context) => {
   }
 }) satisfies GetServerSideProps<{ links: Links }>
 
+
 const Home = (links: Links) => {
   const metaTitle = `${links.title} – akfgfragments`
-  const pageUrl = `https://links.akfgfragments.com/?id=${links.id}`
+  const pageUrl = links.id === 0
+    ? 'https://links.akfgfragments.com'
+    : `https://links.akfgfragments.com/?id=${links.id}`
+
   return (
     <div className='container text-center w-75'>
       <Head>
