@@ -10,10 +10,11 @@ const LangBtnBlock = ({ links }: { links: Links }) => {
         <CommonBtn key='2' linkType='Instagram' href='https://www.instagram.com/akfgfragments_com/' />
         <CommonBtn key='3' linkType='Facebook' href='https://facebook.com/akfgfragmentscom' />
         <CommonBtn key='4' linkType='Twitter' href='https://twitter.com/AkfgfragmentsEn' />
-        <CommonBtn key='5' linkType='Discord' href='https://discord.gg/mQJ4TcjM3h' />
-        <CommonBtn key='6' linkType='Youtube' href='https://www.youtube.com/@akfgfragmentscom' />
-        <CommonBtn key='7' linkType='Telegram' href='https://t.me/akfgfragments' />
-        <CommonBtn key='8' linkType='Reddit' href='https://www.reddit.com/r/AsianKungFuGeneration/' />
+        <CommonBtn key='5' linkType='TikTok' href='https://www.tiktok.com/@akfgfragments' />
+        <CommonBtn key='6' linkType='Discord' href='https://discord.gg/mQJ4TcjM3h' />
+        <CommonBtn key='7' linkType='Youtube' href='https://www.youtube.com/@akfgfragmentscom' />
+        <CommonBtn key='8' linkType='Telegram' href='https://t.me/akfgfragments' />
+        <CommonBtn key='9' linkType='Reddit' href='https://www.reddit.com/r/AsianKungFuGeneration/' />
       </div>
     )
   }
