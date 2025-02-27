@@ -46,9 +46,14 @@ export const getServerSideProps = (async (context) => {
     const query = 'SELECT * FROM links WHERE id = ?;'
 
     const [rows] = await db.execute(query, [id])
-    db.release()
+    await db.release()
 
-    const links = rows
+    const parsedTitle = rows.title.replace(`\\'`, `'`)
+
+    const links = {
+      ...rows,
+      title: parsedTitle
+    }
 
     return { props: links }
   } catch (error) {
