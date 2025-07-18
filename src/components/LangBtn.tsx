@@ -34,6 +34,9 @@ const LangBtn = ({
     case 'ja':
       langFull = 'Japanese'
       break
+    case 'it':
+      langFull = 'Italian'
+      break
     default:
       break
   }
